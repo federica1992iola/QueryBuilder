@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConsoleApp1.CustomException;
+using ConsoleApp1.LogicBusiness;
+using System;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -11,33 +9,24 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Connect c = new Connect();
-            c.button1_Click();
-            DatabaseProcessFinder d = new DatabaseProcessFinder();
+            //metodi per controllare, quando l'applicazione chiamando 
+            //il batch ha controllato che sulla macchina del cliente
+            //è stato installato correttamente l'istanza del server 
+            //per salvare i dati del query builder,che la connessione
+            //venga inizializzata correttamente
+            // Connect connect = new Connect();
+            // connect.StartProgram();
 
-            String fileName = "batch.bat";
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string fullName = System.IO.Path.Combine(desktopPath, fileName);
+            //String fileName = "TaskListBatch.bat";
+            //string currentDirectory = Environment.CurrentDirectory;
+            //string parentDirectory = Directory.GetParent(Environment.CurrentDirectory).FullName;
+            //string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\batch";
 
-            try
-            {
-                string batDir = desktopPath;
-                Process proc = new Process();
-                proc.StartInfo.WorkingDirectory = batDir;
-                proc.StartInfo.FileName = fileName;
-                proc.StartInfo.CreateNoWindow = false;
-                proc.Start();
-                proc.WaitForExit();
+            //string batDirectory = System.IO.Path.Combine(projectDirectory, fileName);
 
-            }
-            catch (Exception exc)
-            {
-
-            }
-
-            d.ReadTaskListFile();
-
-            bool? result = d.IsProcessActive;
+            Batch.Instance().ExecuteBatchFile();
+            
+           
 
 
         }

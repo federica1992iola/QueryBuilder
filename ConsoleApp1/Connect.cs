@@ -13,7 +13,7 @@ namespace ConsoleApp1
         {
         }
 
-        public void button1_Click()
+        public void StartProgram()
         {
             SqlConnection connection;
             SqlCommand command;

@@ -128,15 +128,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connect.cs" />
+    <Compile Include="CustomException\BatchNotFoundException.cs" />
+    <Compile Include="CustomException\CmdStandardErrorException.cs" />
+    <Compile Include="CustomException\SqlServerConfigurationException.cs" />
+    <Compile Include="LogicBusiness\Batch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DatabaseProcessFinder.cs" />
+    <Compile Include="LogicBusiness\SqlServerProcessFinder.cs" />
+    <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Batch\TaskListBatch.bat" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Batch\Process_list.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
